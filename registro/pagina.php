@@ -124,15 +124,8 @@ body {
     0 30px 10px rgba(0,0,0,.18),
     0 15px 10px rgba(0,0,0,.21);
 }
-.form_search .btn_search{
-  background: #1faac8;
-  color: #FFF;
-  padding: 0 20px;
-  border: 0;
-  cursor: pointer;
-  margin-left: 30px;
-  
-}
+
+
 
 </style>
 </head>
@@ -157,8 +150,12 @@ body {
         <div class="col-sm-12">
             <div class="shadow">Repositorio Grupo Carinsa</div>
             <br>
+            <?php 
+              include_once "config.php";
+              $mostrar=mysqli_query($conexion, "SELECT * FROM registro WHERE empresa = 'Carinsa'");
+            ?>
             <div>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"><a href="./files/agregar.php"> Agregar</a> </button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"><a href="./files/agregar.php" <?php if($mostrar != "Carinsa"){?> style="display: none;"<?php  } ?>> Agregar</a> </button>
             </div>
             <br>
             <br>
@@ -166,20 +163,12 @@ body {
             <?php
             require_once 'config.php';
             ?>
-          <div class="container mt-5">
-            <div class="col-12">
-              <div class="mb-3">
-              <label class="form-label">Buscar</label>
-              <input type="text" class="form-control" id="buscar" name="buscar">
-              </div>
-              <button class="btn btn-primary">Buscar</button>
-            <div class="card col-12 mt-5">
-              <div class="card-body">
-                <div id="datos_buscador" class="container pl-5 pr-5"></div>
-              </div>
-            </div>
-            </div>
-          </div>
+            
+            <h2><a href="#" class="effect-shine">Busqueda por descripcion</a></h2>
+            <form action="" method="GET">
+              <input type="text" name="descripcion" placeholder="Busca la descripcion del archivo">
+            </form>
+        
 
 
             <div class="container">

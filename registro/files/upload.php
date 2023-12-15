@@ -22,7 +22,7 @@ if (isset($_FILES['archivo'])) {
         || $extension == "png" || $extension == "pptx"
     ) {
         //Excepcion por tamaño 
-        if ($tamañofich > 20000) {
+        if ($tamañofich > 2000) {
             // Mover el archivo a la carpeta de destino
             if (move_uploaded_file($_FILES["archivo"]["tmp_name"], $carpeta_destino . $nombre_archivo)) {
                 // Insertar la información del archivo en la base de datos
