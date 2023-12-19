@@ -130,17 +130,17 @@ body {
 </style>
 </head>
 <body>
-
-
 <div class="topnav">
   <a href="carinsa.html">Pagina Principal</a>
-  <a href="#" style="float:right"><?php include_once('session.php') ;?>
+  <a href="#" style="float:right"><?php $logeado = include_once('session.php') ;?>
   </a>
-  <a href="login.php" class="user" style="float: right;" onclick="" >
-                                                        <?php echo"Cerrar session";
+  <a href="login.php" class="user" style="float: right;" onclick="button" >
+                                                         <?php echo"Cerrar session";
                                                          include("cerrar_session.php");
                                                                                       ?>
-  </a>
+</a>
+                                                        
+
  
 </div>
 <div class="container">
@@ -148,29 +148,28 @@ body {
     </div >
   
         <div class="col-sm-12">
-            <div class="shadow">Repositorio Grupo Carinsa</div>
+            <div class="shadow">Repositorio Grupo Carinsa Individual</div>
             <br>
-            <?php 
-              include_once "config.php";
-              $mostrar=mysqli_query($conexion, "SELECT * FROM registro WHERE empresa = 'Carinsa'");
+            <?php
+              require_once "config.php";
+              include_once "session.php";
+              $usuario=$_SESSION['usuario'];
+              $consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario = '$usuario'");
+              while ($fila = mysqli_fetch_assoc($consulta)){
             ?>
-            <div>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"><a href="./files/agregar.php" <?php if($mostrar != "Carinsa"){?> style="display: none;"<?php  } ?>> Agregar</a> </button>
-            </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar" style="background-color: #0EDFA3;"><a href="./buscador.php" >Buscador para usuario</a></button>
+            <?php if ($fila['empresa'] == 'Carinsa' ){ ?>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar" style="background-color: #0EDFA3;"><a href="./files/agregar.php" >Agregar</a></button>
+            <?php
+             }
+              }
+            ?>
             <br>
             <br>
             <br>
             <?php
             require_once 'config.php';
             ?>
-            
-            <h2><a href="#" class="effect-shine">Busqueda por descripcion</a></h2>
-            <form action="" method="GET">
-              <input type="text" name="descripcion" placeholder="Busca la descripcion del archivo">
-            </form>
-        
-
-
             <div class="container">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -187,8 +186,10 @@ body {
                        require_once "config.php";
                        include_once "pagina.php";
                        include_once "session.php";
-                       $usuario=$_SESSION['usuario'];
-                       $consulta = mysqli_query($conexion, "SELECT * FROM documento WHERE nombre = '$usuario'");
+                        $usuario=$_SESSION['usuario'];
+                        //*Para solo filtrar por usuario logeado en el = añador '$usuario'  *//
+                        //*Si quieres mostrar todo iguala el nombre = nombre 
+                       $consulta = mysqli_query($conexion, "SELECT * FROM documento WHERE nombre = '$usuario' ");
                        while ($fila = mysqli_fetch_assoc($consulta)):
                        ?>
                             <tr>

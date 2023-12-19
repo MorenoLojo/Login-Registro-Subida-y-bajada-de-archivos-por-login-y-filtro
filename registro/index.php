@@ -55,6 +55,10 @@
                                                       '$password')";
 # echo “Ejecutamos el post para hacer la inserccion”;
       $ejecutarInsertar = mysqli_query($conexion,$insertarDatos);
+      echo "<script language='JavaScript'>
+      alert('Usuario registrado correctamente. ');
+      location.assign('login.php');
+      </script>";
       # echo “Control de errores”;
       if(!$ejecutarInsertar){
         echo"Error al hacer la insercion.";

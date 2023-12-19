@@ -6,7 +6,6 @@
         die();
         session_destroy();
     }else{
-        session_destroy();
         
         
     }

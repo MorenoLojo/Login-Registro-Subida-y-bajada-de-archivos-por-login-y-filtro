@@ -2,16 +2,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrega documento</title>
+    <title>Subir documento</title>
+    <link rel="stylesheet" href="../css/paginaarchivos/styleupload.css">
 </head>
 <body>
 
+<div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+   
 <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h3 class="modal-title" id="exampleModalLabel">Agregar registro</h3>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">
                     <i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
             <div class="modal-body">
@@ -50,6 +63,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="register" name="registrar">Guardar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <img src="../logo-maps.jpg" style="width: 10%" height="100%">
                     </div>
 
             </div>
@@ -57,6 +71,10 @@
             </form>
         </div>
     </div>
+    </ul>
+    </div >
+
 </div>
+
 </body>
 </html>
